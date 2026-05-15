@@ -1,4 +1,4 @@
-name: Learning CI/CD
+name: Node CI
 
 on:
   push:
@@ -6,9 +6,23 @@ on:
       - main
 
 jobs:
-  first-job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Message
-        run: echo "CI/CD Started Successfully"
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check Node Version
+        run: node -v
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build

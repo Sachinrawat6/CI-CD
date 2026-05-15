@@ -1,4 +1,4 @@
-name: Environment Variables
+name: GitHub Secrets
 
 on:
   push:
@@ -6,22 +6,9 @@ on:
       - main
 
 jobs:
-  learn-env:
+  learn-secrets:
     runs-on: ubuntu-latest
 
-    env:
-      APP_NAME: MyFirstApp
-      NODE_ENV: production
-      API_URL: https://api.test.com
-
     steps:
-      - name: Print App Name
-        run: echo $APP_NAME
-
-      - name: Print Environment
-        run: echo $NODE_ENV
-
-      - name: Print API URL
-        run: echo $API_URL
-      - name: Print All Environment Variables
-        run: env
+      - name: Print Secret
+        run: echo ${{ secrets.PROJECT_NAME }}

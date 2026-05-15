@@ -1,4 +1,4 @@
-name: Node CI
+name: Understanding Checkout
 
 on:
   push:
@@ -6,20 +6,15 @@ on:
       - main
 
 jobs:
-  build:
+  learn-checkout:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Before Checkout
+        run: ls
+
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Check Node Version
-        run: node -v
-
-      - name: Install Dependencies
-        run: npm install
+      - name: After Checkout
+        run: ls

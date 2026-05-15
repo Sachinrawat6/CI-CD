@@ -1,4 +1,4 @@
-name: Understanding Checkout
+name: Environment Variables
 
 on:
   push:
@@ -6,15 +6,16 @@ on:
       - main
 
 jobs:
-  learn-checkout:
+  learn-env:
     runs-on: ubuntu-latest
 
+    env:
+      APP_NAME: MyFirstApp
+      NODE_ENV: production
+
     steps:
-      - name: Before Checkout
-        run: ls
+      - name: Print App Name
+        run: echo $APP_NAME
 
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: After Checkout
-        run: ls
+      - name: Print Environment
+        run: echo $NODE_ENV

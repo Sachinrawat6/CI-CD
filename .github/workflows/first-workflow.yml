@@ -9,6 +9,18 @@ jobs:
   learn-secrets:
     runs-on: ubuntu-latest
 
+    env:
+      NODE_ENV: production
+
     steps:
-      - name: Print Secret
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Print Project Secret
         run: echo ${{ secrets.PROJECT_NAME }}
+
+      - name: Print Environment
+        run: echo $NODE_ENV
+
+      - name: Show Files
+        run: ls
